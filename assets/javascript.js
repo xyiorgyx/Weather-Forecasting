@@ -5,6 +5,7 @@ var location = '';
 
 
 function displayWeather (){
+    
     for (i=0; i > data.length; i++)
     const dayDiv = document.createElement('div');
 
