@@ -1,34 +1,45 @@
-//var inputBox =  document.
 
-var userLocation = document.inputbox.textContent
+var requestGeoUrl = 'api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22546ad54811a5933d3ccfa20cc45068';
 
-// var requestWeather = 
-var requestGeoUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=' + 'charlotte' + '&limit=1&appid=b2888db4f0baa774a62c34dc4c426cad';
+var requestWeather = `api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=22546ad54811a5933d3ccfa20cc45068`;
 
 var location = '';
 
 
-function fetchCoordinates (){
 
-fetch(requestGeoUrl, {
-  method: 'GET', 
+fetch("http://api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22546ad54811a5933d3ccfa20cc45068", {
+  method: 'GET',
   credentials: 'same-origin',
-  redirect: 'follow', 
+  redirect: 'follow',
 })
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
     console.log(data);
+    console.log(data[0].lat)
+    console.log(data[0].lon)
+
+    var lat = data[0].lat
+    var lon = data[0].lon
   });
 
 
-}
-requestGeoUrl();
-// function displayWeather (){
-    
-//     for (i=0; i > data.length; i++)
-//     const dayDiv = document.createElement('div');
-// }
 
-inputButton.addEventListener('click', fetchcoordinates);
+
+function fetchWeather() {
+  fetch(requestWeather, {
+    method: 'GET',
+    credentials: 'same-origin',
+    redirect: 'follow',
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+
+
+}
+// inputButton.addEventListener('click', fetchCoordinates);
