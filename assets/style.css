@@ -1,11 +1,19 @@
 * {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: skyblue;
-    text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: skyblue;
+  text-align: center;
 }
 
 h1 {
   position: relative;
-  top:45px;
+  top: 45px;
   font-size: xxx-large;
+}
+main{
+  margin: 0;
+}
+#todays-weather{
+background-color: black;
+height: 5%;
+width: 5%;
 }
