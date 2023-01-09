@@ -1,19 +1,45 @@
 * {
   font-family: 'Courier New', Courier, monospace;
   background-color: skyblue;
-  text-align: center;
 }
 
 h1 {
   position: relative;
-  top: 45px;
-  font-size: xxx-large;
+  top: 35px;
+  font-size: xx-large;
+  font-weight: bolder;
 }
-main{
-  margin: 0;
+
+main {
+  text-align: center;
+  color: black;
 }
-#todays-weather{
-background-color: black;
-height: 5%;
-width: 5%;
+
+form button{
+  margin-top: 10%;
+  height: 35px;
+  width: 100px;
+  background-color: beige;
+}
+
+form input{
+  height: 25px;
+  background-color: beige;
+}
+
+form {
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: relative;
+  margin-top: 7%;
+
+  width: 40%;
+  background-color: black;
+}
+
+
+#todays-weather {
+  background-color: black;
+  height: 5%;
+  width: 5%;
 }
