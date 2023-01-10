@@ -21,31 +21,44 @@ fetch("http://api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22
     aquireWeatherData(lat, lon, cityName, state);
   });
 // the next function takes the lat and lon of a given city and requests weather information in that area
-function aquireWeatherData(lat, lon, cityName, state){
-fetch(`http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=22546ad54811a5933d3ccfa20cc45068`, {
-  method: 'GET',
-  credentials: 'same-origin',
-  redirect: 'follow',
-})
-  .then(function (response) {
-    return response.json();
+function aquireWeatherData(lat, lon, cityName, state) {
+  fetch(`http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=22546ad54811a5933d3ccfa20cc45068`, {
+    method: 'GET',
+    credentials: 'same-origin',
+    redirect: 'follow',
   })
-  .then(function (data) {
-    console.log(data);
-    
-    displayWeather(data, cityName, state)
-  });
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+
+      displayWeather(data, cityName, state)
+    });
 }
 // we now take the weather information that we requested and append it into our html file.
-function displayWeather(data, cityName, state){
+function displayWeather(data, cityName, state) {
   const curWeatherBox = document.querySelector('#weatherSection');
   const title = document.createElement('h1');
-  title.innerHTML= cityName + ', '+ state;
-  curWeatherBox.append(title);
-  var currentTemp = data.current.temp
+  title.innerHTML = cityName + ', ' + state;
+ curWeatherBox.append(title);
+  var icon = data.current.weather[0].icon
+  var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+  var weatherIcon = document.createElement('img')
+  curWeatherBox.append(weatherIcon);
+  weatherIcon.setAttribute('src', iconurl);
+  const list = document.createElement('ul');
+  curWeatherBox.append(list);
+  var listItem = document.createElement('li');
+  list.append(listItem)
+  var currentTemp = data.current.temp;
+  listItem.append('Current Temperature: '+ currentTemp +" F°");
   var windSpeed = data.current.wind_speed;
-  var humidity = current.humidity;
-  var weatherIcon = current.weather[0].icon;
+  listItem.append('Current Wind Speed: '+ windSpeed + ' mph');
+  var humidity = data.current.humidity;
+  listItem.append('Current Humidity ' + humidity +" %");
+   console.log(listItem)
+ 
 
 
 }

@@ -6,9 +6,6 @@
   margin: 0;
 }
 
-html{
-  height: 100%;
-}
 #yourWeatherForcast {
   position: relative;
   margin-top: 3%;
@@ -35,7 +32,7 @@ input {
   border-width: 5px;
 }
 
-button{
+button {
   background-color: aliceblue;
   height: 40%;
   width: 40%;
@@ -44,39 +41,40 @@ button{
   font-size: large;
 }
 
-
 #weatherSection {
   position: relative;
   text-align: center;
 
 }
 
-h1{
+h1 {
   display: block;
   position: relative;
 }
 
-#searchHistory{
+#searchHistory {
   text-align: center;
-display: inline-block;
-position: relative;
-border-width: 5px;
-border-style: dashed;
-left: 2%;
-height: 500px;
-width: 15%;
+  display: inline-block;
+  position: relative;
+  border-width: 5px;
+  border-style: dashed;
+  left: 2%;
+  height: 500px;
+  width: 15%;
 }
 
 #weatherSection {
+background-color: aliceblue;
   position: absolute;
   height: 70%;
   top: 24%;
   right: 12%;
-  width: 82%;
-  left: 17%;
+  width: 50%;
+  left: 19%;
 }
+
 #weatherSection h2 {
-  width: 10%;
+  width: 20%;
   margin-top: 0%;
   position: relative;
   left: 35%;
@@ -86,4 +84,11 @@ width: 15%;
   display: inline;
   position: relative;
   right: 10%;
+}
+
+
+#weatherSection div ul li {
+  
+  font-size: xx-large;
+  font-weight: bold;
 }
