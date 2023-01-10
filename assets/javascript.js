@@ -35,7 +35,6 @@ fetch(`http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&unit
     
     displayWeather(data, cityName, state)
   });
- 
 }
 // we now take the weather information that we requested and append it into our html file.
 function displayWeather(data, cityName, state){
@@ -50,5 +49,7 @@ function displayWeather(data, cityName, state){
 
 
 }
+
+
 // inputButton.addEventListener('click', fetchCoordinates);
 
