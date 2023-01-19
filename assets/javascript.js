@@ -38,10 +38,11 @@ function aquireWeatherData(lat, lon, cityName, state) {
 }
 // we now take the weather information that we requested and append it into our html file.
 function displayWeather(data, cityName, state) {
+  displayweeksWeather(data)
   const curWeatherBox = document.querySelector('#weatherSection');
   const title = document.createElement('h1');
   title.innerHTML = cityName + ', ' + state;
- curWeatherBox.append(title);
+  curWeatherBox.append(title);
   var icon = data.current.weather[0].icon
   var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
   var weatherIcon = document.createElement('img')
@@ -50,19 +51,50 @@ function displayWeather(data, cityName, state) {
   const list = document.createElement('ul');
   curWeatherBox.append(list);
   var listItem = document.createElement('li');
+  var listItem2 = document.createElement('li');
+  var listItem3 = document.createElement('li');
   list.append(listItem)
+  list.append(listItem2)
+  list.append(listItem3)
   var currentTemp = data.current.temp;
-  listItem.append('Current Temperature: '+ currentTemp +" F°");
+  listItem.append('Current Temperature: ' + currentTemp + " F°");
   var windSpeed = data.current.wind_speed;
-  listItem.append('Current Wind Speed: '+ windSpeed + ' mph');
+  listItem2.append('Current Wind Speed: ' + windSpeed + ' mph');
   var humidity = data.current.humidity;
-  listItem.append('Current Humidity ' + humidity +" %");
-   console.log(listItem)
- 
-
-
+  listItem3.append('Current Humidity ' + humidity + " %");
+  
 }
 
-
-// inputButton.addEventListener('click', fetchCoordinates);
-
+function displayweeksWeather(data) {
+  for (let i = 0; i < 5; i++) {
+    // var currentTemp = data.daily[0].
+    // var windSpeed = data.current.wind_speed;
+    // var humidity = data.current.humidity;
+    const weekWeatherBox = document.querySelector('#weeksWeather');
+    const dayDiv = document.createElement('div');
+    weekWeatherBox.append(dayDiv);
+    // const dateHeading = document.createElement('h2');
+    // var oldDate = data.dt
+    // var convertedDate = new Date(dateUTC * 1000)
+    // dateHeading.innerHTML =
+    // dayDiv.append(dateHeading) 
+    var weatherIcon = document.createElement('img')
+    var icon = data.daily[0].weather[0].icon
+    var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+    dayDiv.append(weatherIcon);
+    weatherIcon.setAttribute('src', iconurl);
+    const list = document.createElement('ul');
+    var listItem = document.createElement('li');
+    var listItem2 = document.createElement('li');
+    var listItem3 = document.createElement('li');
+    list.append(listItem)
+    list.append(listItem2)
+    list.append(listItem3)
+    var currentTemp = data.current.temp;
+    listItem.append('Current Temperature: ' + currentTemp + " F°");
+    var windSpeed = data.current.wind_speed;
+    listItem2.append('Current Wind Speed: ' + windSpeed + ' mph');
+    var humidity = data.current.humidity;
+    listItem3.append('Current Humidity ' + humidity + " %");
+  }
+}
