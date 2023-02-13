@@ -69,7 +69,7 @@ h1 {
   top: 29%;
   right: 36%;
   width: 25%;
-  
+
 }
 
 #weatherSection h2 {
@@ -92,7 +92,7 @@ ul {
   list-style-type: none;
   margin-top: 4%;
   font-size: xx-large;
-  
+
 }
 
 #weatherSection div ul li {
@@ -112,7 +112,7 @@ ul {
   flex-direction: row;
 }
 
-#weeksWeather div{
+#weeksWeather div {
   position: relative;
   top: 19%;
   width: 17%;
@@ -124,9 +124,20 @@ ul {
 #weeksWeather h2 {
   display: inline;
   position: absolute;
-right: 47%;
-width: 20%;
-margin-top: 1%;
-font-size: xx-large;
-text-decoration: underline;
+  right: 47%;
+  width: 20%;
+  margin-top: 1%;
+  font-size: xx-large;
+  text-decoration: underline;
+}
+
+#weeksWeather div ul li {
+  display: list-item;
+  font-weight: bold;
+}
+
+#weeksWeather div ul {
+  list-style-type: none;
+  margin-top: 4%;
+  font-size: xx-large;
 }

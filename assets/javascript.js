@@ -66,6 +66,7 @@ function displayWeather(data, cityName, state) {
 }
 
 function displayweeksWeather(data) {
+  
   for (let i = 0; i < 5; i++) {
     // var currentTemp = data.daily[0].
     // var windSpeed = data.current.wind_speed;
@@ -90,11 +91,12 @@ function displayweeksWeather(data) {
     list.append(listItem)
     list.append(listItem2)
     list.append(listItem3)
-    var currentTemp = data.current.temp;
+    var currentTemp = data.daily[0].temp.day;
     listItem.append('Current Temperature: ' + currentTemp + " F°");
-    var windSpeed = data.current.wind_speed;
+    var windSpeed = data.daily[0].wind_speed;
     listItem2.append('Current Wind Speed: ' + windSpeed + ' mph');
-    var humidity = data.current.humidity;
+    var humidity = data.daily[0].humidity;
     listItem3.append('Current Humidity ' + humidity + " %");
+    console.log(list)
   }
 }
