@@ -1,7 +1,12 @@
+const searchButton = document.querySelector('#searchButton')
+var userInput ='Charlotte'
 
+function fetchUrl (userInput){
+var userInput = document.getElementById('userInputer').value;
 var requestGeoUrl = 'api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22546ad54811a5933d3ccfa20cc45068';
+console.log(requestGeoUrl)
 // the following function sends an api request for the coordinates of a given city
-fetch("http://api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22546ad54811a5933d3ccfa20cc45068", {
+fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`, {
   method: 'GET',
   credentials: 'same-origin',
   redirect: 'follow',
@@ -20,6 +25,7 @@ fetch("http://api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22
     var state = data[0].state;
     aquireWeatherData(lat, lon, cityName, state);
   });
+}
 // the next function takes the lat and lon of a given city and requests weather information in that area
 function aquireWeatherData(lat, lon, cityName, state) {
   fetch(`http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=22546ad54811a5933d3ccfa20cc45068`, {
@@ -62,11 +68,10 @@ var icon = data.current.weather[0].icon
 
 }
 
-
-  
-
+function creteHistoryButton (){
 
 
+}
 function displayweeksWeather(data){
 var weatherHtml = '';
 
@@ -92,3 +97,5 @@ for(let i=1; i<6; i++){
   $("#weeksWeather").html(weatherHtml)
 }
 }
+searchButton.addEventListener("click",fetchUrl(userInput))
+fetchUrl(userInput);
