@@ -37,76 +37,49 @@ function aquireWeatherData(lat, lon, cityName, state) {
     });
 }
 // we now take the weather information that we requested and append it into our html file.
-function displayWeather(data, cityName, state) {
-  displayweeksWeather(data.daily);
-  const curWeatherBox = document.querySelector('#weatherSection');
-  const title = document.createElement('h1');
-  title.innerHTML = cityName + ', ' + state;
-  curWeatherBox.append(title);
-  var icon = data.current.weather[0].icon
-  var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
-  var weatherIcon = document.createElement('img')
-  curWeatherBox.append(weatherIcon);
-  weatherIcon.setAttribute('src', iconurl);
-  const list = document.createElement('ul');
-  curWeatherBox.append(list);
-  var listItem = document.createElement('li');
-  var listItem2 = document.createElement('li');
-  var listItem3 = document.createElement('li');
-  list.append(listItem)
-  list.append(listItem2)
-  list.append(listItem3)
-  var currentTemp = data.current.temp;
-  listItem.append('Current Temperature: ' + currentTemp + " F°");
-  var windSpeed = data.current.wind_speed;
-  listItem2.append('Current Wind Speed: ' + windSpeed + ' mph');
-  var humidity = data.current.humidity;
-  listItem3.append('Current Humidity ' + humidity + " %");
-  
+function displayWeather(data) {
+  var todayWeatherHtml='';
+  var todaysDate = data.current.dt;
+var icon = data.current.weather[0].icon
+  todayWeatherHtml += `
+  <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">${dayjs(todaysDate * 1000).format('dddd MMMM D, YYYY')}</h5>
+          <img src = http://openweathermap.org/img/w/${icon}.png"> </img> 
+          <ul>
+            <li>Temp: ${data.current.temp}degrees</li>
+            <li>Wind Speed: ${data.current.wind_speed}knots</li>
+            <li>Humidty: ${data.current.humidity}%</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  `
+
+  $("#weatherSection").html(todayWeatherHtml)
+  displayweeksWeather(data)
+
 }
 
-// function displayweeksWeather(data) {
-  
-//   for (let i = 0; i < 5; i++) {
-  
-//     const weekWeatherBox = document.querySelector('#weeksWeather');
-//     const dayDiv = document.createElement('div');
-//     weekWeatherBox.append(dayDiv);
 
-//     var weatherIcon = document.createElement('img')
-//     var icon = data.daily[0].weather[0].icon
-//     var iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
-//     dayDiv.append(weatherIcon);
-//     weatherIcon.setAttribute('src', iconurl);
-//     const list = document.createElement('ul');
-//     var listItem = document.createElement('li');
-//     var listItem2 = document.createElement('li');
-//     var listItem3 = document.createElement('li');
-//     list.append(listItem)
-//     list.append(listItem2)
-//     list.append(listItem3)
-//     var currentTemp = data.daily[0].temp.day;
-//     listItem.append('Current Temperature: ' + currentTemp + " F°");
-//     var windSpeed = data.daily[0].wind_speed;
-//     listItem2.append('Current Wind Speed: ' + windSpeed + ' mph');
-//     var humidity = data.daily[0].humidity;
-//     listItem3.append('Current Humidity ' + humidity + " %");
-//     console.log(list)
-//   }
-// }
+  
+
 
 
 function displayweeksWeather(data){
 var weatherHtml = '';
 
-for(let i=0; i<5; i++){
-  var current = data[i];
-
+for(let i=1; i<6; i++){
+  var current = data.daily[i];
+  var icon = current.weather[0].icon;
+  todaysDate = current.dt
   weatherHtml += `
   <div class="col">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">${current.dt}</h5>
+          <h5 class="card-title">${dayjs(todaysDate * 1000).format('dddd MMMM D, YYYY')}</h5>
+          <img src = http://openweathermap.org/img/w/${icon}.png"> </img> 
           <ul>
             <li>Temp: ${current.temp.day}degrees</li>
             <li>Wind Speed: ${current.wind_speed}knots</li>
@@ -116,8 +89,6 @@ for(let i=0; i<5; i++){
       </div>
     </div>
   `
+  $("#weeksWeather").html(weatherHtml)
 }
-
-$("#weeksWeather").html(weatherHtml)
-
 }
