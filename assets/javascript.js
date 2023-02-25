@@ -2,11 +2,11 @@ const searchButton = document.querySelector('#searchButton')
 var userInput ='Charlotte'
 
 function fetchUrl (userInput){
-var userInput = document.getElementById('userInputer').value;
+// var userInput = document.getElementById('userInputer').value;
 var requestGeoUrl = 'api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22546ad54811a5933d3ccfa20cc45068';
 console.log(requestGeoUrl)
 // the following function sends an api request for the coordinates of a given city
-fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`, {
+fetch(`http://api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`, {
   method: 'GET',
   credentials: 'same-origin',
   redirect: 'follow',
@@ -46,13 +46,13 @@ function aquireWeatherData(lat, lon, cityName, state) {
 function displayWeather(data) {
   var todayWeatherHtml='';
   var todaysDate = data.current.dt;
-var icon = data.current.weather[0].icon
+var icon = (data.current.weather[0].icon)
   todayWeatherHtml += `
   <div class="col">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">${dayjs(todaysDate * 1000).format('dddd MMMM D, YYYY')}</h5>
-          <img src = http://openweathermap.org/img/w/${icon}.png"> </img> 
+          <img src = "http://openweathermap.org/img/w/${icon}.png"> </img> 
           <ul>
             <li>Temp: ${data.current.temp}degrees</li>
             <li>Wind Speed: ${data.current.wind_speed}knots</li>
@@ -84,7 +84,7 @@ for(let i=1; i<6; i++){
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">${dayjs(todaysDate * 1000).format('dddd MMMM D, YYYY')}</h5>
-          <img src = http://openweathermap.org/img/w/${icon}.png"> </img> 
+          <img src = "http://openweathermap.org/img/w/${icon}.png"> </img> 
           <ul>
             <li>Temp: ${current.temp.day}degrees</li>
             <li>Wind Speed: ${current.wind_speed}knots</li>
