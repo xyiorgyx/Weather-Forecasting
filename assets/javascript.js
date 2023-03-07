@@ -45,12 +45,13 @@ function aquireWeatherData(lat, lon, cityName, state) {
     });
 }
 // we now take the weather information that we requested and append it into our html file.
-function displayWeather(data) {
+function displayWeather(data, cityName, state) {
   var todayWeatherHtml='';
   var todaysDate = data.current.dt;
 var icon = (data.current.weather[0].icon)
   todayWeatherHtml += `
   <div id="Today" class="col">
+  <h2> ${cityName}, ${state}  <h2>
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">${dayjs(todaysDate * 1000).format('dddd MMMM D, YYYY')}</h5>
