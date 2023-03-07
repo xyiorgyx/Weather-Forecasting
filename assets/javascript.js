@@ -25,6 +25,7 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22
     var state = data[0].state;
     aquireWeatherData(lat, lon, cityName, state);
   });
+  
 }
 // the next function takes the lat and lon of a given city and requests weather information in that area
 function aquireWeatherData(lat, lon, cityName, state) {
@@ -40,6 +41,7 @@ function aquireWeatherData(lat, lon, cityName, state) {
       console.log(data);
 
       displayWeather(data, cityName, state)
+      createHistoryButton(cityName);
     });
 }
 // we now take the weather information that we requested and append it into our html file.
@@ -48,7 +50,7 @@ function displayWeather(data) {
   var todaysDate = data.current.dt;
 var icon = (data.current.weather[0].icon)
   todayWeatherHtml += `
-  <div class="col">
+  <div id="Today" class="col">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">${dayjs(todaysDate * 1000).format('dddd MMMM D, YYYY')}</h5>
@@ -68,10 +70,11 @@ var icon = (data.current.weather[0].icon)
 
 }
 
-function creteHistoryButton (){
-
-
+function createHistoryButton (cityName){
+historySection = `<li> <button> ${cityName}</button> </li>`
+$("#searchHistoryButton").html(historySection)
 }
+
 function displayweeksWeather(data){
 var weatherHtml = '';
 

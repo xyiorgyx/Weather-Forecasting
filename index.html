@@ -11,28 +11,40 @@
 </head>
 
 <body>
-<div>
-  <h1 id="yourWeatherForcast">Your Weather Forecast</h1>
-  <form action="click" method="get">
-    <input id="userInput" type="text" placeholder="Choose a city">
-    <button id='searchButton'>Search</button>
-  </form>
-  <div id="searchHistory">
-    <h2>Search History</h2>
-  </div>
+  <header>
+    <div>
+      <h1 id="yourWeatherForcast">Your Weather Forecast</h1>
+      <form action="click" method="get">
+        <input id="userInput" type="text" placeholder="Choose a city">
+        <button id='searchButton'>Search</button>
+      </form>
 
+  </header>
 
-
-
-  <div id="weatherSection">
+  
+  <div id="top_container">
+    <div id="search">
+      <h2>Search History</h2>
+      <ul id="searchHistoryButton">
+  
+      </ul>
+    </div>
+    <div id="weatherSection">
+    </div>
+    
+  
   </div>
   <h2>This Weeks Weather</h2>
-  <div id="weeksWeather" class="row row-cols-5">
+    <div id="weeksWeather" class="row row-cols-5"></div>
+      
 
-  </div>
+
+
+
+
   <link rel="stylesheet" href="./assets/style.css">
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-  integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <script src="./assets/javascript.js"></script>

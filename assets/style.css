@@ -9,4 +9,29 @@
 
 #weatherSection ul li {
   list-style-type: none;
+
 }
+
+
+#search{
+  position: relative;
+  display: inline-block;
+  width: 25%;
+  right :35%;
+  border-top-width: 2px;
+  border-style: groove;
+}
+
+#search li {
+  list-style-type: none;
+}
+
+#Today {
+display: inline-block;
+width: 25%;
+position: relative;
+height: 100%;
+margin-bottom: 5%;
+}
+
+
