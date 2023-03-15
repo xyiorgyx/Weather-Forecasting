@@ -27,6 +27,7 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid
     var cityName = data[0].name;
     var state = data[0].state;
     aquireWeatherData(lat, lon, cityName, state);
+    saveWeatherHistory(cityName)
   });
   
 }
@@ -83,7 +84,6 @@ function createHistoryButton (cityName, state){
   newButton.append(searchText)
   historySection.append(newListItem)
   historySection.append(newButton);
-
 }
 
 function displayweeksWeather(data){
@@ -112,4 +112,16 @@ for(let i=1; i<6; i++){
 }
 }
 
+
+
+function saveWeatherHistory(cityName) {
+  let chosenCity =  $(this).val();
+  localStorage.saveItem(chosenCity, cityName)
+}
+
+function displayPreviousSearch (){
+
+}
+// let historyButton = querySelector("#search").childNodes()
 searchButton.addEventListener("click",fetchUrl);
+historyButton.addEventListener("click",displayPreviousSearch);

@@ -1,6 +1,9 @@
 *{
   text-align: center;
 }
+body {
+
+}
 
 #weeksWeather div ul li{
   text-align: left;
@@ -12,18 +15,18 @@
 
 }
 
-
 #search{
   position: absolute;
   display: inline-block;
   width: 20%;
   left :6%;
   top: 5%;
-  height: 70%;
+  height: 50%;
   border-top-width: 2px;
   border-style: groove;
   text-align: center;
 }
+
 #searchHistoryButton button {
  align-items: end;
   width: 90%;
@@ -44,9 +47,11 @@ margin-bottom: 5%;
 }
 
 h2 {
-  margin-bottom: 2%;
+  margin-bottom: 5%;
 }
 
 
-
-
+#weeksWeather {
+  position: relative;
+  margin-top: 5%;
+}
