@@ -1,12 +1,15 @@
 const searchButton = document.querySelector('#searchButton')
-var userInput ='Charlotte'
 
-function fetchUrl (userInput){
+
+
+function fetchUrl (){
+let userInput = document.getElementById("userInput").value; 
+console.log(userInput)
 // var userInput = document.getElementById('userInputer').value;
-var requestGeoUrl = 'api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22546ad54811a5933d3ccfa20cc45068';
+var requestGeoUrl = `api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`;
 console.log(requestGeoUrl)
 // the following function sends an api request for the coordinates of a given city
-fetch(`http://api.openweathermap.org/geo/1.0/direct?q=oceanside&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`, {
+fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`, {
   method: 'GET',
   credentials: 'same-origin',
   redirect: 'follow',
@@ -41,7 +44,7 @@ function aquireWeatherData(lat, lon, cityName, state) {
       console.log(data);
 
       displayWeather(data, cityName, state)
-      createHistoryButton(cityName);
+      createHistoryButton(cityName, state);
     });
 }
 // we now take the weather information that we requested and append it into our html file.
@@ -71,9 +74,16 @@ var icon = (data.current.weather[0].icon)
 
 }
 
-function createHistoryButton (cityName){
-historySection = `<li> <button> ${cityName}</button> </li>`
-$("#searchHistoryButton").html(historySection)
+function createHistoryButton (cityName, state){
+  let historySection = document.getElementById("searchHistoryButton");
+  let newListItem = document.createElement('li')
+  let newButton =document.createElement('button')
+  newListItem.append(newButton)
+  let searchText= `${cityName}, ${state}`
+  newButton.append(searchText)
+  historySection.append(newListItem)
+  historySection.append(newButton);
+
 }
 
 function displayweeksWeather(data){
@@ -101,5 +111,5 @@ for(let i=1; i<6; i++){
   $("#weeksWeather").html(weatherHtml)
 }
 }
-searchButton.addEventListener("click",fetchUrl(userInput))
-fetchUrl(userInput);
+
+searchButton.addEventListener("click",fetchUrl);

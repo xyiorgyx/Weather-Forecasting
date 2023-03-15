@@ -14,12 +14,20 @@
 
 
 #search{
-  position: relative;
+  position: absolute;
   display: inline-block;
-  width: 25%;
-  right :35%;
+  width: 20%;
+  left :6%;
+  top: 5%;
+  height: 70%;
   border-top-width: 2px;
   border-style: groove;
+  text-align: center;
+}
+#searchHistoryButton button {
+ align-items: end;
+  width: 90%;
+  margin: 1% 50% 0 0;
 }
 
 #search li {
@@ -31,11 +39,14 @@ display: inline-block;
 width: 25%;
 position: relative;
 height: 100%;
+margin-top: 2%;
 margin-bottom: 5%;
 }
 
 h2 {
   margin-bottom: 2%;
 }
+
+
 
 
