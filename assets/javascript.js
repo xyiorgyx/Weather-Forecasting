@@ -1,6 +1,15 @@
 const searchButton = document.querySelector('#searchButton')
 
 
+// function renderPreviousSearches (){
+//   (let i = 0; i < localStorage.length; i++) { console.log(localStorage.getItem(localStorage.key(i))); 
+    
+//      createHistoryButton (cityName, state);
+//   }
+
+// }
+// renderPreviousSearches();
+
 
 function fetchUrl (){
 let userInput = document.getElementById("userInput").value; 
@@ -27,7 +36,6 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid
     var cityName = data[0].name;
     var state = data[0].state;
     aquireWeatherData(lat, lon, cityName, state);
-    saveWeatherHistory(cityName)
   });
   
 }
@@ -46,6 +54,7 @@ function aquireWeatherData(lat, lon, cityName, state) {
 
       displayWeather(data, cityName, state)
       createHistoryButton(cityName, state);
+      
     });
 }
 // we now take the weather information that we requested and append it into our html file.
@@ -84,6 +93,7 @@ function createHistoryButton (cityName, state){
   newButton.append(searchText)
   historySection.append(newListItem)
   historySection.append(newButton);
+  localStorage.setItem(searchText, cityName)
 }
 
 function displayweeksWeather(data){
@@ -114,14 +124,14 @@ for(let i=1; i<6; i++){
 
 
 
-function saveWeatherHistory(cityName) {
-  let chosenCity =  $(this).val();
-  localStorage.saveItem(chosenCity, cityName)
-}
 
-function displayPreviousSearch (){
+ 
 
-}
-// let historyButton = querySelector("#search").childNodes()
+
+// function displayPreviousSearch (){
+//   let chosenCity =  $(this).val();
+// }
+
 searchButton.addEventListener("click",fetchUrl);
-historyButton.addEventListener("click",displayPreviousSearch);
+// let historyButton = querySelector("#search").childNodes()
+// historyButton.addEventListener("click",displayPreviousSearch);
