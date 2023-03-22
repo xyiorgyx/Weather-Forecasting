@@ -18,7 +18,7 @@ console.log(userInput)
 var requestGeoUrl = `api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`;
 console.log(requestGeoUrl)
 // the following function sends an api request for the coordinates of a given city
-fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`, {
+fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=22546ad54811a5933d3ccfa20cc45068`, {
   method: 'GET',
   credentials: 'same-origin',
   redirect: 'follow',
@@ -41,7 +41,7 @@ fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid
 }
 // the next function takes the lat and lon of a given city and requests weather information in that area
 function aquireWeatherData(lat, lon, cityName, state) {
-  fetch(`http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=22546ad54811a5933d3ccfa20cc45068`, {
+  fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=22546ad54811a5933d3ccfa20cc45068`, {
     method: 'GET',
     credentials: 'same-origin',
     redirect: 'follow',
